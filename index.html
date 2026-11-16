@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>IKE MEDIA GH — Send Documents for Printing</title>
+  <meta name="description" content="Upload your documents to IKE MEDIA GH for printing. No account needed.">
+  <meta name="theme-color" content="#141414">
+  <link rel="icon" href="logo.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/customer.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <a class="brand" href="index.html">
+        <span class="logo" role="img" aria-label="IKE MEDIA GH logo"></span>
+        <span><span class="brand-name">IKE MEDIA GH</span><span class="brand-sub">Printing Press</span></span>
+      </a>
+      <a class="btn btn-primary btn-sm" href="#order" data-start>Upload Document</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ================= HOME ================= -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="cmyk" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          <h1>Send your documents straight to our printers.</h1>
+          <p class="lead">No Bluetooth, no WhatsApp, no account. Upload your files, check them, choose how you want them printed — and we'll get to work.</p>
+          <div class="hero-cta">
+            <a class="btn btn-accent btn-lg" href="#order" data-start><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4m0 0-5 5m5-5 5 5M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg> Upload Document</a>
+            <span class="muted small">PDF · Word · PowerPoint · Excel · JPG · PNG · TXT</span>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="sheet s1"><span></span><span></span><span></span><span class="short"></span></div>
+          <div class="sheet s2"><span></span><span></span><span class="short"></span><b></b></div>
+          <div class="sheet s3"><span></span><span></span><span></span><span></span><span class="short"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section" id="how">
+      <h2>How it works</h2>
+      <ol class="steps-grid">
+        <li><b>1</b><h3>Upload</h3><p>Pick one or more files from your phone, tablet or computer.</p></li>
+        <li><b>2</b><h3>Preview</h3><p>Open each file and confirm it's the right document.</p></li>
+        <li><b>3</b><h3>Choose options</h3><p>Copies, black &amp; white or colour, paper size and sides — per document.</p></li>
+        <li><b>4</b><h3>Submit</h3><p>Enter your name and get an order reference. Show it at the counter.</p></li>
+      </ol>
+    </section>
+
+    <section class="container section" id="services">
+      <h2>Our services</h2>
+      <div class="services">
+        <div class="service"><span class="dot" style="background:var(--ink)"></span><h3>Black &amp; white printing</h3><p>Assignments, CVs, forms, reports and everyday documents.</p></div>
+        <div class="service"><span class="dot" style="background:var(--accent)"></span><h3>Full colour printing</h3><p>Flyers, presentations, certificates and brochures.</p></div>
+        <div class="service"><span class="dot" style="background:var(--cyan)"></span><h3>Photo printing</h3><p>Print your JPG and PNG photos and images.</p></div>
+        <div class="service"><span class="dot" style="background:var(--yellow)"></span><h3>Paper sizes &amp; duplex</h3><p>A4, A3, A5, Letter and Legal — single or double-sided.</p></div>
+      </div>
+    </section>
+
+    <!-- ================= ORDER WIZARD ================= -->
+    <section class="container section" id="order">
+      <div class="card wizard">
+        <ol class="stepper" aria-label="Order progress">
+          <li data-step-ind="1" class="active"><span>1</span> Upload</li>
+          <li data-step-ind="2"><span>2</span> Preview &amp; options</li>
+          <li data-step-ind="3"><span>3</span> Your details</li>
+        </ol>
+
+        <!-- Step 1: upload -->
+        <div class="step" data-step="1">
+          <h2>Upload your documents</h2>
+          <label class="dropzone" id="dropzone" for="fileInput">
+            <input type="file" id="fileInput" multiple class="sr-only"
+              accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.ppt,.pptx,.xls,.xlsx,.txt,application/pdf,image/jpeg,image/png,text/plain">
+            <span class="dz-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4m0 0-5 5m5-5 5 5M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg></span>
+            <strong>Tap to choose files</strong>
+            <span class="muted dz-desktop">or drag and drop them here</span>
+            <span class="muted small" id="limitsText">PDF, DOC, DOCX, PPT, PPTX, XLS, XLSX, JPG, PNG, TXT</span>
+          </label>
+          <div id="uploadErrors"></div>
+          <ul class="file-list" id="fileList"></ul>
+          <div class="step-actions">
+            <span class="muted small" id="uploadSummary"></span>
+            <button class="btn btn-primary btn-lg" id="toStep2" disabled>Continue</button>
+          </div>
+        </div>
+
+        <!-- Step 2: preview & specs -->
+        <div class="step hidden" data-step="2">
+          <h2>Preview &amp; printing options</h2>
+          <p class="muted">Open each document to check it, then choose how it should be printed.</p>
+          <div id="docCards"></div>
+          <div class="step-actions">
+            <button class="btn btn-lg" data-back="1">Back</button>
+            <div class="spacer"></div>
+            <span class="muted small" id="confirmSummary"></span>
+            <button class="btn btn-primary btn-lg" id="toStep3" disabled>Continue</button>
+          </div>
+        </div>
+
+        <!-- Step 3: details & submit -->
+        <div class="step hidden" data-step="3">
+          <h2>Your details</h2>
+          <p class="muted">No account needed — this just helps us find you when your order is ready.</p>
+          <form id="detailsForm" novalidate>
+            <div class="details-grid">
+              <div class="field">
+                <label for="custName">Your name <span style="color:var(--accent)">*</span></label>
+                <input class="input" id="custName" name="customerName" autocomplete="name" maxlength="100" required placeholder="e.g. Ama Mensah">
+              </div>
+              <div class="field">
+                <label for="custPhone">Phone number</label>
+                <input class="input" id="custPhone" name="phone" type="tel" autocomplete="tel" maxlength="20" placeholder="e.g. 024 123 4567">
+                <div class="hint">So we can call you if there's a problem with your files.</div>
+              </div>
+            </div>
+            <h3 class="summary-title">Order summary</h3>
+            <div class="summary" id="orderSummary"></div>
+            <div id="submitError"></div>
+            <div class="step-actions">
+              <button type="button" class="btn btn-lg" data-back="2">Back</button>
+              <div class="spacer"></div>
+              <button type="submit" class="btn btn-accent btn-lg" id="submitBtn">Submit printing request</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Success -->
+        <div class="step hidden success" data-step="done">
+          <div class="success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></div>
+          <h2>Your printing request has been submitted successfully!</h2>
+          <p class="muted">Order Reference</p>
+          <div class="ref" id="orderRef">PRT-00000</div>
+          <button class="btn btn-sm" id="copyRef">Copy reference</button>
+          <p class="success-text">Your documents have been sent to the printing press. Please wait while our workers process your order. Show this reference at the counter.</p>
+          <p class="muted small" id="successMeta"></p>
+          <button class="btn btn-primary btn-lg" id="newOrder">Submit another order</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <span>© <span id="year"></span> IKE MEDIA GH</span>
+    </div>
+  </footer>
+
+  <script src="js/common.js"></script>
+  <script src="js/config.js"></script>
+  <script src="vendor/supabase/supabase.js"></script>
+  <script src="js/supabase-store.js"></script>
+  <script src="js/viewer.js"></script>
+  <script src="js/customer.js"></script>
+</body>
+</html>
